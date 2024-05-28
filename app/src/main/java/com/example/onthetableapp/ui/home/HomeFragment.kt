@@ -19,6 +19,8 @@ import androidx.lifecycle.get
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.bumptech.glide.Glide
 import com.example.onthetableapp.MainActivity
 import com.example.onthetableapp.R
@@ -27,6 +29,7 @@ import com.example.onthetableapp.data.remote.entity.MealsArrayListModel
 import com.example.onthetableapp.data.remote.network.MealsApiInterface
 import com.example.onthetableapp.data.remote.network.RetrofitClient
 import com.example.onthetableapp.databinding.FragmentHomeBinding
+import com.example.onthetableapp.ui.MealsAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +39,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var mealsAdapter: MealsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,8 +68,11 @@ class HomeFragment : Fragment() {
             }
         }, viewLifecycleOwner)
 
+
+
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         homeViewModel.getMealsArraylist()
+        homeViewModel.getSuggestedMeals()
 
         homeViewModel.mealsMutableLiveData.observe(viewLifecycleOwner, Observer { m ->
             // Update the UI with the new user data
@@ -81,9 +87,11 @@ class HomeFragment : Fragment() {
             binding.countryOfDishOfTheDayTextView.text = m.meals.get(0).strArea
         })
 
-        binding.cardView.setOnClickListener {
-            homeViewModel.getMealsArraylist()
-        }
+        homeViewModel.mealsYouMightLikeMutableLiveData.observe(viewLifecycleOwner, Observer { meal ->
+            mealsAdapter = MealsAdapter(meal.meals, context)
+            binding.youMightLikeRecyclerView.adapter = mealsAdapter
+            binding.youMightLikeRecyclerView.layoutManager = GridLayoutManager(context, 2)
+        })
 
         return view
     }
