@@ -10,4 +10,9 @@
     <color name="colorPrimaryDark">#B71C1C</color>
     <color name="windowBackground">#FFCDD2</color>
 
+    <color name="neutral">#EDEFF4</color>
+    <color name="dark_grey">#1E1E1E</color>
+    <color name="outline_color">#20272C</color>
+
+
 </resources>

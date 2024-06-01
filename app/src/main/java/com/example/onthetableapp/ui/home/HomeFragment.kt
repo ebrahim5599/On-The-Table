@@ -40,6 +40,12 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var mealsAdapter: MealsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,22 +57,6 @@ class HomeFragment : Fragment() {
         // Set toolbar title
         (activity as MainActivity).supportActionBar?.title = "Home"
 
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.overflow_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.exit -> {
-                        Toast.makeText(context, "exit", Toast.LENGTH_SHORT).show()
-                        return true
-                    }
-
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner)
 
 
 
@@ -94,6 +84,24 @@ class HomeFragment : Fragment() {
         })
 
         return view
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.exit -> {
+                Toast.makeText(context, "Exit", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 
 }
