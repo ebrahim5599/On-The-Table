@@ -8,31 +8,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.core.view.MenuProvider
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.bumptech.glide.Glide
 import com.example.onthetableapp.MainActivity
 import com.example.onthetableapp.R
-import com.example.onthetableapp.data.remote.entity.Meals
-import com.example.onthetableapp.data.remote.entity.MealsArrayListModel
-import com.example.onthetableapp.data.remote.network.MealsApiInterface
-import com.example.onthetableapp.data.remote.network.RetrofitClient
 import com.example.onthetableapp.databinding.FragmentHomeBinding
 import com.example.onthetableapp.ui.MealsAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
