@@ -12,19 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.onthetableapp.R;
-import com.example.onthetableapp.data.remote.entity.Meals;
-import com.example.onthetableapp.data.remote.entity.MealsArrayListModel;
-import com.example.onthetableapp.model.MealModel;
+import com.example.onthetableapp.data.remote.entity.HomeMeals;
 
 import java.util.ArrayList;
 
 public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHolder> {
 
-    ArrayList<Meals> mealsArrayList;
+    ArrayList<HomeMeals> homeMealsArrayList;
     Context context;
 
-    public MealsAdapter(ArrayList<Meals> mealsArrayList, Context context) {
-        this.mealsArrayList = mealsArrayList;
+    public MealsAdapter(ArrayList<HomeMeals> homeMealsArrayList, Context context) {
+        this.homeMealsArrayList = homeMealsArrayList;
         this.context = context;
     }
 
@@ -37,13 +35,13 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MealsAdapter.MealsViewHolder holder, int position) {
-        Glide.with(context).load(mealsArrayList.get(position).getStrMealThumb()).into(holder.mealImageView);
-        holder.mealTextView.setText(mealsArrayList.get(position).getStrMeal());
+        Glide.with(context).load(homeMealsArrayList.get(position).getStrMealThumb()).into(holder.mealImageView);
+        holder.mealTextView.setText(homeMealsArrayList.get(position).getStrMeal());
     }
 
     @Override
     public int getItemCount() {
-        return mealsArrayList.size();
+        return homeMealsArrayList.size();
     }
 
     public static class MealsViewHolder extends RecyclerView.ViewHolder {

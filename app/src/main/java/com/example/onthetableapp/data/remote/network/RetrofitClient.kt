@@ -1,12 +1,9 @@
 package com.example.onthetableapp.data.remote.network
 
-import android.util.Log
-import android.widget.Toast
-import com.example.onthetableapp.data.remote.entity.MealsArrayListModel
+import com.example.onthetableapp.data.remote.entity.HomeMealsList
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Random
 
 object RetrofitClient {
     private const val BASE_URL ="https://www.themealdb.com/api/json/v1/1/"
@@ -18,7 +15,7 @@ object RetrofitClient {
 
     private val apiInterface: MealsApiInterface = getInstance().create(MealsApiInterface::class.java)
 
-    fun getMealsArrayList() : Call<MealsArrayListModel> {
+    fun getMealsArrayList() : Call<HomeMealsList> {
         return apiInterface.getMeal()
     }
 
@@ -27,7 +24,7 @@ object RetrofitClient {
         val allowedChars = ('a' .. 'z').filter { it !in listOf('q', 'u', 'x', 'z') }
         return allowedChars.random()
     }
-    fun getSuggestedMealsArrayList() : Call<MealsArrayListModel>{
+    fun getSuggestedMealsArrayList() : Call<HomeMealsList>{
         return apiInterface.getSuggestedMeals(getRandomCharExceptSomeCharacters())
     }
 }

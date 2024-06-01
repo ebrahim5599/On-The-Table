@@ -1,5 +1,5 @@
 package com.example.onthetableapp.data.remote.entity
-data class Meals (
+data class HomeMeals (
 
     var idMeal                      : String? = null,
     var strMeal                     : String? = null,
