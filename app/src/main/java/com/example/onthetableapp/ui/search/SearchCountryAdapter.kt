@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onthetableapp.R
-import com.example.onthetableapp.data.remote.entity.SearchMeals
+import com.example.onthetableapp.data.remote.entity.SearchMealsList
 
-class SearchCountryAdapter(private val countryList : ArrayList<SearchMeals>): RecyclerView.Adapter<SearchCountryAdapter.CountryViewHolder>() {
+class SearchCountryAdapter(private val countryList : ArrayList<SearchMealsList>): RecyclerView.Adapter<SearchCountryAdapter.CountryViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

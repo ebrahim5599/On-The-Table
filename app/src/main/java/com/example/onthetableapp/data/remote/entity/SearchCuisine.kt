@@ -5,6 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 data class SearchCuisine (
 
-  @SerializedName("meals" ) var meals : ArrayList<SearchMeals> = arrayListOf()
+  @SerializedName("meals" ) var meals : ArrayList<SearchMealsList> = arrayListOf()
 
 )
