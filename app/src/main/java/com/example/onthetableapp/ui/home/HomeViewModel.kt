@@ -12,7 +12,6 @@ class HomeViewModel : ViewModel() {
 
     val mealsMutableLiveData: MutableLiveData<HomeMealsList> = MutableLiveData<HomeMealsList>()
     val mealsYouMightLikeMutableLiveData: MutableLiveData<HomeMealsList> = MutableLiveData<HomeMealsList>()
-//    val arrayListModel: ArrayList<MealsArrayListModel> = ArrayList<MealsArrayListModel>()
 
     fun getMealsArraylist() {
         RetrofitClient.getMealsArrayList().enqueue(object : Callback<HomeMealsList> {

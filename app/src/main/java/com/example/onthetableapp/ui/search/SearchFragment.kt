@@ -9,11 +9,16 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.MenuProvider
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.onthetableapp.MainActivity
 import com.example.onthetableapp.R
 
 class SearchFragment : Fragment() {
+
+    lateinit var searchViewModel: SearchViewModel
+    lateinit var searchCountryAdapter: SearchCountryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -31,7 +36,11 @@ class SearchFragment : Fragment() {
         // Remove back button from toolbar
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
-
+        searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        searchViewModel.getCuisine()
+        searchViewModel.cuisineMutableLiveData.observe(viewLifecycleOwner, Observer { s ->
+            searchCountryAdapter = SearchCountryAdapter(s)
+        })
 
         return view
     }
