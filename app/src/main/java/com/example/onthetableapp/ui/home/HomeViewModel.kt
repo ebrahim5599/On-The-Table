@@ -36,8 +36,6 @@ class HomeViewModel : ViewModel() {
                 p1: Response<HomeMealsList>
             ) {
                 mealsYouMightLikeMutableLiveData.value = p1.body()
-//                var mealImageUrl : String? = p1.body()?.meals?.get(0)?.strMeal
-//                arrayListModel = p1.body().meals
             }
 
             override fun onFailure(p0: Call<HomeMealsList>, p1: Throwable) {

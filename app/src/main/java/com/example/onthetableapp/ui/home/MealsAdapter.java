@@ -1,4 +1,4 @@
-package com.example.onthetableapp.ui;
+package com.example.onthetableapp.ui.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
