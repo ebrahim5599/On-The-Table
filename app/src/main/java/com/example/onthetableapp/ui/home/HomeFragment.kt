@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide
 import com.example.onthetableapp.MainActivity
 import com.example.onthetableapp.R
 import com.example.onthetableapp.databinding.FragmentHomeBinding
-import com.example.onthetableapp.ui.MealsAdapter
 
 class HomeFragment : Fragment() {
 
@@ -62,7 +61,10 @@ class HomeFragment : Fragment() {
         })
 
         homeViewModel.mealsYouMightLikeMutableLiveData.observe(viewLifecycleOwner, Observer { meal ->
-            mealsAdapter = MealsAdapter(meal.meals, context)
+            mealsAdapter = MealsAdapter(
+                meal.meals,
+                context
+            )
             binding.youMightLikeRecyclerView.adapter = mealsAdapter
             binding.youMightLikeRecyclerView.layoutManager = GridLayoutManager(context, 2)
         })

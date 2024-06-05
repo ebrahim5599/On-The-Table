@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onthetableapp.R
-import com.example.onthetableapp.data.remote.entity.SearchMealsList
+import com.example.onthetableapp.data.remote.entity.SearchCuisine
 
-class SearchCountryAdapter(private val countryList : ArrayList<SearchMealsList>): RecyclerView.Adapter<SearchCountryAdapter.CountryViewHolder>() {
+class SearchCountryAdapter(private val countryList: ArrayList<SearchCuisine>): RecyclerView.Adapter<SearchCountryAdapter.CountryViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -18,7 +18,7 @@ class SearchCountryAdapter(private val countryList : ArrayList<SearchMealsList>)
     }
 
     override fun onBindViewHolder(holder: SearchCountryAdapter.CountryViewHolder, position: Int) {
-        holder.countryTextView.text = countryList[position].strArea
+        holder.countryTextView.text = countryList.get(position).strArea
     }
 
     override fun getItemCount(): Int {
