@@ -56,4 +56,5 @@
     <string name="search_by_cuisine">Search By Cuisine</string>
     <string name="search_by_categories">Search By Categories</string>
     <string name="search_by_ingredients">Search By Ingredients</string>
+    <string name="add_meal">Add Meal</string>
 </resources>
