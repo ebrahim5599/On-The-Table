@@ -8,20 +8,22 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.onthetableapp.MainActivity
 import com.example.onthetableapp.R
-import com.example.onthetableapp.databinding.FragmentHomeBinding
 import com.example.onthetableapp.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
 
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var searchCountryAdapter: SearchCountryAdapter
+    private lateinit var searchCategoryAdapter: SearchCategoryAdapter
+    private lateinit var searchIngredientAdapter: SearchIngredientAdapter
+
+
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +52,20 @@ class SearchFragment : Fragment() {
             binding.countriesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         })
 
+        searchViewModel.getCategory()
+        searchViewModel.categoryMutableLiveData.observe(viewLifecycleOwner, Observer { o ->
+            searchCategoryAdapter = SearchCategoryAdapter(o.categories, context)
+            binding.categoriesRecyclerView.adapter = searchCategoryAdapter
+            binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        })
+
+        searchViewModel.getIngredient()
+        searchViewModel.ingredientMutableLiveData.observe(viewLifecycleOwner, Observer { i ->
+            searchIngredientAdapter = SearchIngredientAdapter(i.meals, context)
+            binding.ingredientsRecyclerView.adapter = searchIngredientAdapter
+            binding.ingredientsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        })
         return view
     }
 
