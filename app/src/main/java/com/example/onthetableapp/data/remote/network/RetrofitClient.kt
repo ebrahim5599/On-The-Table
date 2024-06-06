@@ -1,8 +1,10 @@
 package com.example.onthetableapp.data.remote.network
 
 import com.example.onthetableapp.data.remote.entity.HomeMealsList
+import com.example.onthetableapp.data.remote.entity.SearchCategoryList
 import com.example.onthetableapp.data.remote.entity.SearchCuisine
 import com.example.onthetableapp.data.remote.entity.SearchCuisineList
+import com.example.onthetableapp.data.remote.entity.SearchIngredientList
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -33,4 +35,13 @@ object RetrofitClient {
     fun getCuisine() : Call<SearchCuisineList>{
         return apiInterface.getCountryCuisine()
     }
+
+    fun getCategory() : Call<SearchCategoryList>{
+        return apiInterface.getCategory()
+    }
+
+    fun getIngredient() : Call<SearchIngredientList> {
+        return apiInterface.getIngredients()
+    }
+
 }
