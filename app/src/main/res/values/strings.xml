@@ -58,4 +58,5 @@
     <string name="search_by_ingredients">Search By Ingredients</string>
     <string name="add_meal">Add Meal</string>
     <string name="favorite_meals">Favorite Meals</string>
+    <string name="skip">Skip</string>
 </resources>
